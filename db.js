@@ -4,12 +4,15 @@
 // to start the mongodb server, run this command in cmd as administrator
 // command: mongod --dbpath D:\MongoDb\data\db
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 //Define the MongoDN connection URL
-const mongoURL = 'mongodb://localhost:27017/hotel' //replace "mydatabase" (hotels)with your db name
+//const mongoURL = process.env.LOCAL_URL; //replace "mydatabase" (hotels)with your db name
+
+const mongoURL = process.env.DB_URL;
 
 //Set up mongodb connections
-mongoose.connect("mongodb://127.0.0.1:27017/hotel")
+mongoose.connect(mongoURL)
   .then(() => {
     console.log("MongoDB connected successfully");
   })

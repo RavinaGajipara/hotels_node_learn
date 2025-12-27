@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 
 app.use(express.json());
 // req.body
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
     console.log(req.method, req.url);
     next();
 });
+const PORT = process.env.PORT || 3000;
 
 const personRouters = require('./routes/personRoutes'); //Import route file
 app.use('/person',personRouters); //use the routers
@@ -37,6 +39,6 @@ app.use('/person',personRouters); //use the routers
 const menuItemRoutes = require('./routes/menuItemRoutes'); 
 app.use('/menuItem',menuItemRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('server is listening');
 })// tells that 3000 port pe server active hai
