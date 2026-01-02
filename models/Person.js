@@ -55,11 +55,11 @@ personScheme.pre('save', async function(next){
         const hashedPassword = await bcrypt.hash(person.password, salt);
 
         //Override the plain password with the hashed one
-        person.password = hashedPassword;
+       this.password = hashedPassword;
 
-        next();
+        
     }catch(err){
-        return next(err);
+        throw err;
     }
 })
 

@@ -49,7 +49,7 @@ app.get('/idli', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 const personRouters = require('./routes/personRoutes'); //Import route file
-app.use('/person',localAuthMiddleware ,personRouters); //use the routers // here logRequest is middleware
+app.use('/person', personRouters); //use the routers // here logRequest is middleware
 
 const menuItemRoutes = require('./routes/menuItemRoutes'); 
 app.use('/menu',logRequest, menuItemRoutes); 
